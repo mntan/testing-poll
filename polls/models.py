@@ -3,9 +3,8 @@ from django.db import models
 
 
 class PollManager(models.Manager):
-    def get_query_set(self):
-        now = datetime.datetime.now()
-        return super(PollManager, self).get_query_set().filter(pub_date__lte=now)
+    def get_queryset(self):        
+        return super(PollManager, self).get_queryset().filter(pub_date__lte= datetime.datetime.now())
 
 
 class Poll(models.Model):
@@ -14,7 +13,7 @@ class Poll(models.Model):
     
     objects = models.Manager()
     published = PollManager()
-    
+
     def __unicode__(self):
         return self.question
     
