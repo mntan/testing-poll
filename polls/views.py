@@ -7,7 +7,7 @@ from polls.models import Poll, Choice
 
 
 def index(request):
-    latest_poll_list = Poll.published.all().order_by('-pub_date')[:5]
+    latest_poll_list = Poll.published.all().order_by('-pub_date')[:5]   
     return render_to_response('polls/index.html', {'latest_poll_list': latest_poll_list})
 
 
