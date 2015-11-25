@@ -27,9 +27,11 @@ class Choice(models.Model):
     choice = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
     
-    def __unicode__(self):
+    def __unicode__(self): #not using in python 3.4
         return self.choice
-    
+    def __str__(self):
+        return self.choice
+
     def record_vote(self):
         self.votes += 1
         self.save()

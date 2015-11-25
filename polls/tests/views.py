@@ -8,6 +8,7 @@ class PollsViewsTestCase(TestCase):
     fixtures = ['polls_views_testdata.json']
     
     def test_index(self):
+        #resp = self.client.get('/polls/')
         resp = self.client.get(reverse('polls_index'))
         self.assertEqual(resp.status_code, 200)
         self.assertTrue('latest_poll_list' in resp.context)
